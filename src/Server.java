@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Server {
 
 	
-  public final static int SOCKET_PORT = 5056;  // Port boleh diganti
+  public final static int SOCKET_PORT = 5056;  // Port
   public static String FILE_LOCATION;
   
  
@@ -34,14 +34,14 @@ public class Server {
           sock = servsock.accept();
           System.out.println("Koneksi Di : " + sock);
           
-          // Program mengirim file
+          // sending file
           File myFile = new File (FILE_LOCATION);
           byte [] mybytearray  = new byte [(int)myFile.length()];
           fis = new FileInputStream(myFile);
           bis = new BufferedInputStream(fis);
           bis.read(mybytearray,0,mybytearray.length);
           os = sock.getOutputStream();
-          System.out.println("Sending " + FILE_LOCATION + "(" + mybytearray.length + " bytes)"); // Menampilkan besaran file yang di ambil dari server
+          System.out.println("Sending " + FILE_LOCATION + "(" + mybytearray.length + " bytes)"); // filesize
           os.write(mybytearray,0,mybytearray.length);
           os.flush();
           System.out.println("Done.");
